@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"php": "^5.5.11",
-		"crewlabs/unsplash": "^2.2"
+		"crewlabs/unsplash": "^2.2",
+		"linecorp/line-bot-sdk": "^1.5"
 	},
 	"autoload": {
 		"classmap": [
