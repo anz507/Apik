@@ -87,7 +87,7 @@ class HomeController extends BaseController {
                 $botResponse = $bot->replyMessage($event->getReplyToken(), $textMessageBuilder);
 
                 // $botResponse = str_replace("\0","[NULL]",$botResponse);
-                // Log::info('[LINE] LINEBot Response: ' . serialize($botResponse));
+                Log::info('[LINE] LINEBot Response: ' . serialize($botResponse));
             }
 
             $response = Response::make('Success', 200);
