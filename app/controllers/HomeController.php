@@ -78,7 +78,7 @@ class HomeController extends BaseController {
                 $MultiMessageBuilder = new MultiMessageBuilder();
                 $MultiMessageBuilder->add($TextMessageBuilder);
                 $MultiMessageBuilder->add($ImageMessageBuilder);
-                $response = $bot->replyMessage($event->getReplyToken(), $MultiMessageBuilder);
+                $response = $bot->replyMessage($event->getReplyToken(), $TextMessageBuilder);
 
                 Log::info('[LINE] LINEBot Response: ' . serialize($response));
             }
