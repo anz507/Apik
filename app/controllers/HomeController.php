@@ -89,18 +89,18 @@ class HomeController extends BaseController {
             }
         } catch (\LINE\LINEBot\Exception\InvalidSignatureException $e) {
             Log::error('[LINE] Invalid signature');
-            return $res->withStatus(400, 'Invalid signature');
+            return Response::make('[LINE] Invalid signature', 400);
         } catch (\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
             Log::error('[LINE] Unknown event type has come');
-            return $res->withStatus(400, 'Unknown event type has come');
+            return Response::make('[LINE] Unknown event type has come', 400);
         } catch (\LINE\LINEBot\Exception\UnknownMessageTypeException $e) {
             Log::error('[LINE] Unknown message type has come');
-            return $res->withStatus(400, 'Unknown message type has come');
+            return Response::make('[LINE] Unknown message type has come', 400);
         } catch (\LINE\LINEBot\Exception\InvalidEventRequestException $e) {
             Log::error('[LINE] Invalid event request');
-            return $res->withStatus(400, "Invalid event request");
+            return Response::make('[LINE] Invalid event request', 400);
         } catch (Exception $e) {
-            Log::error('[LINE] General Error: ' . $e->getMessage());
+            return Response::make('[LINE] General Error: ' . $e->getMessage(), 400);
         }
     }
 
