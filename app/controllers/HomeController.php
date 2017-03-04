@@ -73,6 +73,8 @@ class HomeController extends BaseController {
                         break;
                 }
 
+                Log::info('[LINE] Image: ' . serialize($data));
+
                 $TextMessageBuilder = new TextMessageBuilder($data->author);
                 $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
                 $MultiMessageBuilder = new MultiMessageBuilder();
