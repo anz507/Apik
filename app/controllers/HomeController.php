@@ -77,7 +77,7 @@ class HomeController extends BaseController {
 
                 $MultiMessageBuilder = new MultiMessageBuilder();
                 if (isset($data->author)) {
-                    $textMessageBuilder = new TextMessageBuilder($data->author);
+                    $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author);
                     $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
                     $MultiMessageBuilder->add($textMessageBuilder);
                     $MultiMessageBuilder->add($ImageMessageBuilder);
