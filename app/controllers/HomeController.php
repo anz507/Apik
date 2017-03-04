@@ -75,11 +75,15 @@ class HomeController extends BaseController {
 
                 Log::info('[LINE] Image: ' . serialize($data));
 
-                $TextMessageBuilder = new TextMessageBuilder($data->author);
-                // $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
-                // $MultiMessageBuilder = new MultiMessageBuilder();
-                // $MultiMessageBuilder->add($TextMessageBuilder);
-                // $MultiMessageBuilder->add($ImageMessageBuilder);
+                if (is_object($data)) {
+                    $TextMessageBuilder = new TextMessageBuilder($data->author);
+                    // $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
+                    // $MultiMessageBuilder = new MultiMessageBuilder();
+                    // $MultiMessageBuilder->add($TextMessageBuilder);
+                    // $MultiMessageBuilder->add($ImageMessageBuilder);
+                } else {
+                    $TextMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try another keyword. (moon wink)');
+                }
                 $response = $bot->replyMessage($event->getReplyToken(), $TextMessageBuilder);
 
                 Log::info('[LINE] LINEBot Response: ' . serialize($response));
