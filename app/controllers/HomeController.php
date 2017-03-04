@@ -42,8 +42,6 @@ class HomeController extends BaseController {
             Log::error('[LINE] Invalid signature 2');
             $response = Response::make('Bad Request', 400);
             return $response;
-        } else {
-            return Response::make('Test', 401);
         }
 
         // Check request with signature and parse request
