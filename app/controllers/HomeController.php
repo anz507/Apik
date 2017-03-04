@@ -78,7 +78,7 @@ class HomeController extends BaseController {
                 $MultiMessageBuilder = new MultiMessageBuilder();
                 if (isset($data->author)) {
                     $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
-                    $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author);
+                    $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author . '('. $data->authorLink .')');
                     $MultiMessageBuilder->add($ImageMessageBuilder);
                     $MultiMessageBuilder->add($textMessageBuilder);
                 } else {
@@ -123,8 +123,10 @@ class HomeController extends BaseController {
             $imgUrl = $img->urls->regular;
             $imgThumbUrl = $img->urls->thumb;
             $imgAuthor = $img->user->name;
+            $imgAuthorLink = $img->user->links->html;
             $data->url = $imgUrl;
             $data->author = $imgAuthor;
+            $data->authorLink = $imgAuthorLink;
             $data->thumb = $imgThumbUrl;
         }
 
@@ -144,8 +146,10 @@ class HomeController extends BaseController {
             $imgUrl = $img->urls->regular;
             $imgThumbUrl = $img->urls->thumb;
             $imgAuthor = $img->user->name;
+            $imgAuthorLink = $img->user->links->html;
             $data->url = $imgUrl;
             $data->author = $imgAuthor;
+            $data->authorLink = $imgAuthorLink;
             $data->thumb = $imgThumbUrl;
         }
 
