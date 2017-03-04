@@ -16,6 +16,4 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::post('/api/line/unsplash', ['as' => 'line-unsplash', 'uses' => 'HomeController@postLine']);
-
-Route::get('/api/line/unsplash', ['as' => 'line-unsplash', 'uses' => 'HomeController@postLine']);
+Route::post('/api/line/unsplashed', ['as' => 'line-unsplash', 'uses' => 'HomeController@postLine']);
