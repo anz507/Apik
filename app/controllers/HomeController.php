@@ -120,7 +120,7 @@ class HomeController extends BaseController {
         $data = new stdclass();
 
         if (is_object($img)) {
-            $imgUrl = $img->urls->regular;
+            $imgUrl = $img->urls->full;
             $imgThumbUrl = $img->urls->thumb;
             $imgAuthor = $img->user->name;
             $imgAuthorLink = $img->user->links->html;
@@ -143,7 +143,7 @@ class HomeController extends BaseController {
         if (count($imgs->results) > 0) {
             $randImgKey = array_rand($imgs->results);
             $img = $imgs->results[$randImgKey];
-            $imgUrl = $img->urls->regular;
+            $imgUrl = $img->urls->full;
             $imgThumbUrl = $img->urls->thumb;
             $imgAuthor = $img->user->name;
             $imgAuthorLink = $img->user->links->html;
