@@ -75,7 +75,7 @@ class HomeController extends BaseController {
 
                 Log::info('[LINE] Image: ' . serialize($data));
 
-                if (is_object($data)) {
+                if (isset($data->author)) {
                     $textMessageBuilder = new TextMessageBuilder($data->author);
                     // $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
                     // $MultiMessageBuilder = new MultiMessageBuilder();
