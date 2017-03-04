@@ -77,12 +77,12 @@ class HomeController extends BaseController {
 
                 $MultiMessageBuilder = new MultiMessageBuilder();
                 if (isset($data->author)) {
-                    $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author);
                     $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
-                    $MultiMessageBuilder->add($textMessageBuilder);
+                    $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author);
                     $MultiMessageBuilder->add($ImageMessageBuilder);
+                    $MultiMessageBuilder->add($textMessageBuilder);
                 } else {
-                    $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try another keyword. (moon wink)');
+                    $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try more general keyword :)');
                     $MultiMessageBuilder->add($textMessageBuilder);
                 }
                 Log::info('[LINE] Reply Token: ' . $event->getReplyToken());
