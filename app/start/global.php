@@ -31,8 +31,7 @@ ClassLoader::addDirectories(array(
 |
 */
 
-Log::useFiles('php://stderr');
-// Log::useFiles(storage_path().'/logs/laravel.log');
+Log::useFiles(storage_path().'/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------
