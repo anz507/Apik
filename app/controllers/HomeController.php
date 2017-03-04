@@ -63,7 +63,7 @@ class HomeController extends BaseController {
                 Log::info('[LINE] Reply from User: ' . $event->getText());
 
                 $data = new stdclass();
-                switch ($event->getText()) {
+                switch (strtolower($event->getText())) {
                     case 'random':
                         $data = $this->getRandomImage();
                         break;
