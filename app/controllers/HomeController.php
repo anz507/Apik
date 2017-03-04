@@ -31,8 +31,8 @@ class HomeController extends BaseController {
 
     public function postLine()
     {
-        $httpClient = new CurlHTTPClient('w3m29w+IVtbYWnZu+aXcnNlCJuC0gEBfaRNHBzRIAScxxwi4QEUpApX8Puiy8F83AET3nuf9KElWOIwX8nYkNuuX7W41ZEp6OHYkqMTG5qskpTlrUrdkb5/czGmKM0dvspOxqlLjV7ZwsTYuuA9vzgdB04t89/1O/w1cDnyilFU=');
-        $bot = new LINEBot($httpClient, ['channelSecret' => 'ada22e4446381a3c79460884c6fa2e96']);
+        $httpClient = new CurlHTTPClient('xwRQOgv+qz7hj7fUhOqsp44Lr6NSRAkReLr8IEm9pgpi44LJmXkXBsaH1VsuLywL0aa7uf85NGFJBRouESydj9FEjhQaYNqzRkkabjCxVUnmasf6AjB6Aee7E3jYw8GV9/DOMeC0xq+jJdJ036+V0gdB04t89/1O/w1cDnyilFU=');
+        $bot = new LINEBot($httpClient, ['channelSecret' => 'fb909f7ddd902047b665a492f295476d']);
 
         $signature = Request::header(HTTPHeader::LINE_SIGNATURE);
 
