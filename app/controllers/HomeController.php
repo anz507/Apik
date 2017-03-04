@@ -84,9 +84,10 @@ class HomeController extends BaseController {
                 } else {
                     $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try another keyword. (moon wink)');
                 }
-                $response = $bot->replyMessage($event->getReplyToken(), $textMessageBuilder);
+                $botResponse = $bot->replyMessage($event->getReplyToken(), $textMessageBuilder);
 
-                Log::info('[LINE] LINEBot Response: ' . serialize($response));
+                $botResponse = str_replace("\0","[NULL]",$botResponse);
+                Log::info('[LINE] LINEBot Response: ' . serialize($botResponse));
             }
 
             $response = Response::make('Success', 200);
