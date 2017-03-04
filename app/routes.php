@@ -17,3 +17,5 @@ Route::get('/', function()
 });
 
 Route::post('/api/line/unsplash', ['as' => 'line-unsplash', 'uses' => 'HomeController@postLine']);
+
+Route::get('/api/line/unsplash', ['as' => 'line-unsplash', 'uses' => 'HomeController@postLine']);
