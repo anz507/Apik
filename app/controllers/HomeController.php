@@ -31,6 +31,7 @@ class HomeController extends BaseController {
 
     public function postLine()
     {
+        $response = Response::make('OK', 200);
         $httpClient = new CurlHTTPClient('xwRQOgv+qz7hj7fUhOqsp44Lr6NSRAkReLr8IEm9pgpi44LJmXkXBsaH1VsuLywL0aa7uf85NGFJBRouESydj9FEjhQaYNqzRkkabjCxVUnmasf6AjB6Aee7E3jYw8GV9/DOMeC0xq+jJdJ036+V0gdB04t89/1O/w1cDnyilFU=');
         $bot = new LINEBot($httpClient, ['channelSecret' => 'fb909f7ddd902047b665a492f295476d']);
 
