@@ -76,19 +76,17 @@ class HomeController extends BaseController {
                 Log::info('[LINE] Image: ' . serialize($data));
 
                 $TextMessageBuilder = new TextMessageBuilder($data->author);
-                $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
-                $MultiMessageBuilder = new MultiMessageBuilder();
-                $MultiMessageBuilder->add($TextMessageBuilder);
-                $MultiMessageBuilder->add($ImageMessageBuilder);
+                // $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
+                // $MultiMessageBuilder = new MultiMessageBuilder();
+                // $MultiMessageBuilder->add($TextMessageBuilder);
+                // $MultiMessageBuilder->add($ImageMessageBuilder);
                 $response = $bot->replyMessage($event->getReplyToken(), $TextMessageBuilder);
 
                 Log::info('[LINE] LINEBot Response: ' . serialize($response));
             }
 
-            if ($response->isSucceeded()) {
-                $response = Response::make('Success', 200);
-                return $response;
-            }
+            $response = Response::make('Success', 200);
+            return $response;
         } catch (\LINE\LINEBot\Exception\InvalidSignatureException $e) {
             Log::error('[LINE] Invalid signature');
             return Response::make('[LINE] Invalid signature', 400);
