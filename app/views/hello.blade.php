@@ -35,7 +35,7 @@
 </head>
 <body>
 	<div class="welcome">
-		<a href="#" title="Apik - LINE Bot"><img src="{{asset('images/logo-apik.png')}}" alt="Laravel PHP Framework"></a>
+		<a href="#" title="Apik - LINE Bot"><img style="width: 100px" src="{{asset('images/logo-apik.png')}}" alt="Laravel PHP Framework"></a>
 		<h1>You have arrived.</h1>
 	</div>
 </body>
