@@ -72,7 +72,6 @@ class HomeController extends BaseController {
                 $data = new stdclass();
                 switch (strtolower($event->getText())) {
                     case 'random':
-                        // $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
                         $data = $this->getRandomImage();
                         break;
 
@@ -85,7 +84,6 @@ class HomeController extends BaseController {
                         break;
 
                     default:
-                        // $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
                         $data = $this->getImageByKeyword($event->getText());
                         break;
                 }
@@ -93,6 +91,7 @@ class HomeController extends BaseController {
                 Log::info('[LINE] Image: ' . serialize($data));
 
                 $MultiMessageBuilder = new MultiMessageBuilder();
+                $MultiMessageBuilder->add($autoMessageBuilder);
                 if (isset($data->url)) {
                     $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
                     $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author . "\n" . $data->authorLink );
