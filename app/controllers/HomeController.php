@@ -8,6 +8,7 @@ use \LINE\LINEBot\Event\MessageEvent\TextMessage;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
+use \LINE\LINEBot\Event\FollowEvent;
 
 class HomeController extends BaseController {
 
@@ -51,8 +52,9 @@ class HomeController extends BaseController {
             $events = $bot->parseEventRequest($requestBody, $signature);
 
             foreach ($events as $event) {
-                if ($event instanceof \LINE\LINEBot\Event\FollowEvent) {
-                    $textMessageBuilderFollow = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("Hello! Apik here. Get cool wallpaper by simply reply \"Random\" or just type anything you want (e.g: Beach, Nature, Car, Road, etc). Type \"--help\" to display help message." . $emoticonHappy);
+                if ($event instanceof FollowEvent) {
+                    $emoticonHappy =  $this->getEmoticon(100001);
+                    $textMessageBuilderFollow = new TextMessageBuilder("Hello! Apik here. Get cool wallpaper by simply reply \"Random\" or just type anything you want (e.g: Beach, Nature, Car, Road, etc). Type \"--help\" to display help message." . $emoticonHappy);
                     $botResponse = $bot->replyMessage($event->getReplyToken(), $textMessageBuilderFollow);
 
                     $response = Response::make('Welcome.', 200);
