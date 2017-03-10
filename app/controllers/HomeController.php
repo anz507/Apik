@@ -94,13 +94,11 @@ class HomeController extends BaseController {
 
                 $MultiMessageBuilder = new MultiMessageBuilder();
                 if (isset($data->url)) {
-                    Log::info('[LINE] Debug1');
                     $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
                     $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author . "\n" . $data->authorLink );
                     $MultiMessageBuilder->add($ImageMessageBuilder);
                     $MultiMessageBuilder->add($textMessageBuilder);
                 } else {
-                    Log::info('[LINE] Debug2');
                     $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try more general keyword :)');
                     $MultiMessageBuilder->add($textMessageBuilder);
                 }
@@ -112,6 +110,9 @@ class HomeController extends BaseController {
         } catch (\LINE\LINEBot\Exception\InvalidSignatureException $e) {
             Log::error('[LINE] Invalid signature');
             return Response::make('[LINE] Invalid signature', 400);
+        } catch (\LINE\LINEBot\Exception\InvalidEventSourceException $e) {
+            Log::error('[LINE] Unknown event type has come');
+            return Response::make('[LINE] Unknown event type has come', 400);
         } catch (\LINE\LINEBot\Exception\UnknownEventTypeException $e) {
             Log::error('[LINE] Unknown event type has come');
             return Response::make('[LINE] Unknown event type has come', 400);
@@ -122,6 +123,7 @@ class HomeController extends BaseController {
             Log::error('[LINE] Invalid event request');
             return Response::make('[LINE] Invalid event request', 400);
         } catch (Exception $e) {
+            Log::error('[LINE] General Error: ' . $e->getMessage());
             return Response::make('[LINE] General Error: ' . $e->getMessage(), 400);
         }
     }
