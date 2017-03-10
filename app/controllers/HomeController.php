@@ -51,6 +51,14 @@ class HomeController extends BaseController {
             $events = $bot->parseEventRequest($requestBody, $signature);
 
             foreach ($events as $event) {
+                if ($event instanceof \LINE\LINEBot\Event\FollowEvent) {
+                    $textMessageBuilderFollow = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("Hello! Apik here. Get cool wallpaper by simply reply \"Random\" or just type anything you want (e.g: Beach, Nature, Car, Road, etc). Type \"--help\" to display help message." . $emoticonHappy);
+                    $botResponse = $bot->replyMessage($event->getReplyToken(), $textMessageBuilderFollow);
+
+                    $response = Response::make('Welcome.', 200);
+                    return $response;
+                }
+
                 if (!($event instanceof MessageEvent)) {
                     continue;
                 }
