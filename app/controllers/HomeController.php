@@ -38,10 +38,8 @@ class HomeController extends BaseController {
 
         $signature = Request::header(HTTPHeader::LINE_SIGNATURE);
 
-        Log::info('[LINE] Info signature 1: ' . $signature);
-
         if (empty($signature)) {
-            Log::error('[LINE] Invalid signature 2');
+            Log::error('[LINE] Invalid signature');
             $response = Response::make('Bad Request', 400);
             return $response;
         }
@@ -54,20 +52,27 @@ class HomeController extends BaseController {
 
             foreach ($events as $event) {
                 if (!($event instanceof MessageEvent)) {
-                    Log::info('[LINE] Text Message Come');
                     continue;
                 }
                 if (!($event instanceof TextMessage)) {
-                    Log::info('[LINE] Non Text Message Come');
                     continue;
                 }
 
-                Log::info('[LINE] Reply from User: ' . $event->getText());
+                $autoMessageBuilder = new TextMessageBuilder("Fetching image... " . $this->getEmoticon('100071'));
+                $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
 
                 $data = new stdclass();
                 switch (strtolower($event->getText())) {
                     case 'random':
                         $data = $this->getRandomImage();
+                        break;
+
+                    case '--help':
+                        $helpMessageBuilder = new TextMessageBuilder("Help:\nType 'Random' to get random image.\nType anything to search image by keyword.\nType '--help' to show this help message.");
+
+                        $botHelp = $bot->replyMessage($event->getReplyToken(), $helpMessageBuilder);
+                        $response = Response::make('Success', 200);
+                        return $response;
                         break;
 
                     default:
@@ -87,12 +92,7 @@ class HomeController extends BaseController {
                     $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try more general keyword :)');
                     $MultiMessageBuilder->add($textMessageBuilder);
                 }
-                Log::info('[LINE] Reply Token: ' . $event->getReplyToken());
-                Log::info('[LINE] Text Message: ' . serialize($textMessageBuilder));
                 $botResponse = $bot->replyMessage($event->getReplyToken(), $MultiMessageBuilder);
-
-                // $botResponse = str_replace("\0","[NULL]",$botResponse);
-                Log::info('[LINE] LINEBot Response: ' . $botResponse->getRawBody());
             }
 
             $response = Response::make('Success', 200);
@@ -179,4 +179,11 @@ class HomeController extends BaseController {
         return $output;
     }
 
+    private function getEmoticon($code)
+    {
+        $bin = hex2bin(str_repeat('0', 8 - strlen($code)) . $code);
+        $emoticon =  mb_convert_encoding($bin, 'UTF-8', 'UTF-32BE');
+
+        return $emoticon;
+    }
 }
