@@ -72,7 +72,7 @@ class HomeController extends BaseController {
                 $data = new stdclass();
                 switch (strtolower($event->getText())) {
                     case 'random':
-                        $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
+                        // $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
                         $data = $this->getRandomImage();
                         break;
 
@@ -85,7 +85,7 @@ class HomeController extends BaseController {
                         break;
 
                     default:
-                        $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
+                        // $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
                         $data = $this->getImageByKeyword($event->getText());
                         break;
                 }
