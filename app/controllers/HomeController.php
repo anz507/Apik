@@ -93,12 +93,14 @@ class HomeController extends BaseController {
                 Log::info('[LINE] Image: ' . serialize($data));
 
                 $MultiMessageBuilder = new MultiMessageBuilder();
-                if (isset($data->author)) {
+                if (isset($data->url)) {
+                    Log::info('[LINE] Debug1');
                     $ImageMessageBuilder = new ImageMessageBuilder($data->url, $data->thumb);
                     $textMessageBuilder = new TextMessageBuilder('By: ' . $data->author . "\n" . $data->authorLink );
                     $MultiMessageBuilder->add($ImageMessageBuilder);
                     $MultiMessageBuilder->add($textMessageBuilder);
                 } else {
+                    Log::info('[LINE] Debug2');
                     $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try more general keyword :)');
                     $MultiMessageBuilder->add($textMessageBuilder);
                 }
