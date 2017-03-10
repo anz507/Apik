@@ -102,6 +102,7 @@ class HomeController extends BaseController {
                     $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try more general keyword :)');
                     $MultiMessageBuilder->add($textMessageBuilder);
                 }
+                Log::info('[LINE] Debug3');
                 $botResponse = $bot->replyMessage($event->getReplyToken(), $MultiMessageBuilder);
             }
 
