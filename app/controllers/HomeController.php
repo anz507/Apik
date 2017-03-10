@@ -69,16 +69,15 @@ class HomeController extends BaseController {
                 }
 
                 $autoMessageBuilder = new TextMessageBuilder("Fetching image... " . $this->getEmoticon('100071'));
-                $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
-
                 $data = new stdclass();
                 switch (strtolower($event->getText())) {
                     case 'random':
+                        $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
                         $data = $this->getRandomImage();
                         break;
 
                     case '--help':
-                        $helpMessageBuilder = new TextMessageBuilder("Help:\nType 'Random' to get random image.\nType anything to search image by keyword.\nType '--help' to show this help message.");
+                        $helpMessageBuilder = new TextMessageBuilder("Help:\nType \"Random\" to get random image.\nType anything to search image by keyword.\nType \"--help\" to show this help message.");
 
                         $botHelp = $bot->replyMessage($event->getReplyToken(), $helpMessageBuilder);
                         $response = Response::make('Success', 200);
@@ -86,6 +85,7 @@ class HomeController extends BaseController {
                         break;
 
                     default:
+                        $botAuto = $bot->replyMessage($event->getReplyToken(), $autoMessageBuilder);
                         $data = $this->getImageByKeyword($event->getText());
                         break;
                 }
