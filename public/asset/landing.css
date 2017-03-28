@@ -1,0 +1,213 @@
+html {
+  background-color: #00b1d1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: transparent;
+  height: 100%;
+}
+
+h1 {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+/* Override B3 .panel adding a subtly transparent background */
+.panel {
+  background-color: rgba(225, 95, 207, 0);
+  margin-bottom: 20px;
+  border-style: none;
+  color: #fff;
+  box-shadow: none;
+}
+
+.device {
+  margin-top: -30px;
+  width: 345px;
+  height: 600px;
+  background: url('../images/iphone_skin.png') no-repeat;
+}
+
+.main-logo {
+  width: 284px;
+  height: 44px;
+  margin-top: 22px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: url('../img/main-logo.png') no-repeat;
+  background-size: 100%;
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: none;
+}
+.btn-default {
+  margin-right: 10px;
+  padding: 10px 12px;
+  text-align: right;
+  font-size: 0.7em;
+  max-height: 53px;
+  border-style: none;
+}
+
+.lead {
+  margin-bottom: 40px;
+}
+
+.appstore, .appstore:active {
+  background: url('../img/btn_AppStore.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  padding-left: 150px;
+  padding-top: 20px;
+  display: inline;
+}
+
+.android, .android:active {
+  background: url('../img/btn_android.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-left: 150px;
+  padding-top: 20px;
+  display: inline;
+}
+
+.tlg, .tlg:active {
+  background: url('../img/telegram.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-left: 146px;
+  padding-top: 20px;
+  display: inline;
+}
+
+.fb_button {
+  padding: 8px 12px;
+  background:#0084ff;
+  border-radius: 11px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-top: 24px;
+  display: inline;
+}
+
+.fb_button span {
+  margin-left: 5px;
+  margin-top: -16px;
+  font-size: 17px;
+  line-height: 24px;
+  color: #fff;
+  font-family: Helvetica,Arial,sans-serif;
+  text-transform: none;
+  vertical-align: middle;
+  display: inline-block;
+  font-weight: 100;
+}
+
+
+/* footer shit */
+
+.wrapper {
+  min-height:100%;
+  position:relative;
+}
+
+.navbar-fixed-top {
+  margin: 0px;
+}
+
+.content {
+  margin: 0px;
+  margin-top: 100px;
+  padding-bottom:100px; /* Height of the footer element */
+}
+
+@media (max-width: 600px) {
+  .content {
+    margin: 0;
+  }
+}
+
+
+.main-footer {
+  width:100%;
+  height:50;
+  bottom:0;
+  left:0;
+  text-align: center;
+}
+
+.navbar-nav {
+  position: relative;
+  display: inline-block;
+  float: none;
+}
+
+
+.nav > li > a {
+  color: #ccc;
+  cursor: hand;
+}
+
+.nav > li > a > img {
+  cursor: hand;
+  margin-bottom: 10px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
+  color: white;
+}
+
+.fa-facebook:hover {
+  color: black;
+}
+.fa-twitter:hover {
+  color: black;
+}
+.fa-pinterest:hover {
+  color: black;
+}
+
+.fa-envelope-o:hover {
+  color: black;
+}
+
+.pay {
+  display: block;
+  height: 400px;
+  background-color: white;
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}

@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('index');
 });
 
 Route::post('/api/line/unsplashed', ['as' => 'line-unsplash', 'uses' => 'HomeController@postLine']);
