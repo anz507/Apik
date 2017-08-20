@@ -34,8 +34,8 @@ class HomeController extends BaseController {
 
     public function postLine()
     {
-        $httpClient = new CurlHTTPClient('xwRQOgv+qz7hj7fUhOqsp44Lr6NSRAkReLr8IEm9pgpi44LJmXkXBsaH1VsuLywL0aa7uf85NGFJBRouESydj9FEjhQaYNqzRkkabjCxVUnmasf6AjB6Aee7E3jYw8GV9/DOMeC0xq+jJdJ036+V0gdB04t89/1O/w1cDnyilFU=');
-        $bot = new LINEBot($httpClient, ['channelSecret' => 'fb909f7ddd902047b665a492f295476d']);
+        $httpClient = new CurlHTTPClient(Config::get('config.channelAccessToken'));
+        $bot = new LINEBot($httpClient, ['channelSecret' => Config::get('config.channelSecret')]);
 
         $signature = Request::header(HTTPHeader::LINE_SIGNATURE);
 
@@ -101,7 +101,6 @@ class HomeController extends BaseController {
                     $textMessageBuilder = new TextMessageBuilder('Cannot find the image you are looking for. Try more general keyword :)');
                     $MultiMessageBuilder->add($textMessageBuilder);
                 }
-                Log::info('[LINE] Debug3');
                 $botResponse = $bot->replyMessage($event->getReplyToken(), $MultiMessageBuilder);
             }
 
@@ -178,7 +177,7 @@ class HomeController extends BaseController {
         try {
             $ch = curl_init($uri);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Authorization: Bearer 8045aedab8b74c5a7f0fae2b04fddc086484349d897682f86b5686a79dde58ef'
+                'Authorization: Bearer ' . Config::get('config.unsplashAccessToken')
             ));
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_setopt($ch, CURLOPT_TIMEOUT, 4);
